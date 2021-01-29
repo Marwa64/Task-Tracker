@@ -1,6 +1,8 @@
 import Button from './Button'
+import Task from './Task'
 
 const Tasks = (props) => {
+  let animationDelay = 0.5;
 
   const onClick = () => {
     console.log("click");
@@ -8,7 +10,7 @@ const Tasks = (props) => {
   return (
     <>
       <div className='tasksContainer'>
-        {props.tasks.map((task) => (<h3 key={task.id}>{task.text}</h3>))}
+        {props.tasks.map((task) => (<Task key={task.id} animationDelay={animationDelay+= 0.5} task={task} deleteTask={props.deleteTask} toggleReminder={props.toggleReminder} />))}
       </div>
       <Button text="Add" onClick={onClick}/>
     </>
