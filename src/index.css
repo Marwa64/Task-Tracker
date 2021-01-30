@@ -13,43 +13,32 @@ body {
   height: 100%;
 }
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 7vh;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  align-items: center;
+  margin-bottom: 30px;
 }
 h1 {
-  text-align: center;
   font-size: 45px;
+  padding-left: 40px;
 }
-.tasksContainer {
-  margin-top: 20px;
-  background-color: #00000091;
-  border: 2px solid #b59c04;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 55vh;
-  width: 75%;
-  overflow-y: auto;
-}
-.tasksContainer::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 12px;
 }
-.tasksContainer::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background-color: #888787;
   border-radius: 10px;
 }
 .task {
   background-color: #888787;
-  left: -100%;
+  left: -200%;
   margin-bottom: 5px;
   margin-top: 8px;
   width: 92%;
@@ -61,8 +50,13 @@ h1 {
   animation-delay: 1s;
 }
 @keyframes slide {
-    0% { left: -100%; }
+    0% { left: -200%; }
     100% { left: 0; }
+}
+svg {
+  position: absolute;
+  right: 30px;
+  margin-top: 12px;
 }
 .reminder {
   border-left: 10px solid green;
@@ -71,23 +65,83 @@ h3 {
   margin-bottom: -5px;
 }
 button {
-  margin-top: 30px;
+  float: right;
+  margin-right: 40px;
+}
+.btn {
   color: #f1c700;
   background-color: black;
   border-style: hidden;
   font-family: 'Courgette', cursive;
   font-size: 22px;
   border-radius: 5px;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 25px 10px 25px;
 }
-button:hover {
+.btn:hover {
   color: black;
   background-color: #d8b900;
 }
-
-@media only screen and (max-width: 1000px) {
+.add-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin-top: 15px;
+}
+.form-control {
+  margin: 20px 0;
+}
+.form-control {
+  left: -200%;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: center;
+  font-size: 27px;
+  color: #f1c700;
+  position: relative;
+  animation: slide 0.5s forwards;
+  animation-delay: 1s;
+}
+.form-control label {
+  display: block;
+}
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+#submit {
+  left: -200%;
+  margin-top: 20px;
+  position: relative;
+  animation: slide 0.5s forwards;
+  animation-delay: 1s;
+}
+@media only screen and (max-width: 700px) {
   /* For mobile phones: */
-  .tasksContainer {
-    width: 90%;
+  .form-control {
+    grid-template-columns: auto;
+  }
+  header {
+    grid-template-columns: auto;
+  }
+  button {
+    margin-left: 16%;
+  }
+  h1 {
+    text-align: center;
+    margin-left: -20px;
   }
 }

@@ -1,5 +1,6 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 import { useState } from 'react'
 
 const App = () => {
@@ -24,6 +25,15 @@ const App = () => {
     }
   ])
 
+  const [form, setForm] = useState(true)
+
+  const displayForm = () => {
+    setForm(true)
+  }
+  const saveTask = () => {
+    setForm(false)
+  }
+
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
@@ -33,10 +43,12 @@ const App = () => {
   }
 
   return (
+    <>
+    <Header title="Task Tracker" displayForm={displayForm}/>
     <div className="container">
-      <Header title="Task Tracker"/>
-      <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}/>
+        {form == false ? <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}/> : <AddTask saveTask={saveTask}/>}
     </div>
+    </>
   );
 }
 
