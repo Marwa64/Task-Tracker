@@ -21,7 +21,7 @@ body {
 header {
   margin-top: 7vh;
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 77% 23%;
   align-items: center;
   margin-bottom: 30px;
 }
@@ -73,9 +73,9 @@ button {
   background-color: black;
   border-style: hidden;
   font-family: 'Courgette', cursive;
-  font-size: 22px;
+  font-size: 20px;
   border-radius: 5px;
-  padding: 10px 25px 10px 25px;
+  padding: 12px 20px 12px 20px;
 }
 .btn:hover {
   color: black;
@@ -97,7 +97,7 @@ button {
   display: grid;
   grid-template-columns: 40% 60%;
   align-items: center;
-  font-size: 27px;
+  font-size: 25px;
   color: #f1c700;
   position: relative;
   animation: slide 0.5s forwards;
@@ -111,7 +111,8 @@ button {
   height: 40px;
   margin: 5px;
   padding: 3px 7px;
-  font-size: 17px;
+  font-size: 20px;
+  font-family: 'Courgette', cursive;
 }
 .form-control-check {
   display: flex;

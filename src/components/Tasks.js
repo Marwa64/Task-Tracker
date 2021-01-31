@@ -1,4 +1,3 @@
-import Button from './Button'
 import Task from './Task'
 
 const Tasks = (props) => {

@@ -25,28 +25,31 @@ const App = () => {
     }
   ])
 
-  const [form, setForm] = useState(true)
+  const [form, setForm] = useState(false)
 
   const displayForm = () => {
     setForm(true)
   }
-  const saveTask = () => {
-    setForm(false)
+  const saveTask = (task) => {
+    const id = tasks.length + 1;
+    const newTask = {id, ...task};
+    setTasks([...tasks, newTask]);
+    setForm(false);
   }
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id))
+    setTasks(tasks.filter((task) => task.id !== id));
   }
 
   const  toggleReminder = (id) => {
-    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task))
+    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task));
   }
 
   return (
     <>
     <Header title="Task Tracker" displayForm={displayForm}/>
     <div className="container">
-        {form == false ? <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}/> : <AddTask saveTask={saveTask}/>}
+        {form === false ? tasks.length > 0 ? <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}/> : 'No tasks yet, add one!' : <AddTask saveTask={saveTask}/>}
     </div>
     </>
   );
