@@ -5,7 +5,7 @@ const Header = (props) => {
     return (
       <header>
         <h1>{props.title}</h1>
-        <Button text="Add Task" onClick={props.displayForm}/>
+        <Button text={props.headerButton.text} onClick={props.headerButton.onClick}/>
       </header>
     )
 }

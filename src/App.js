@@ -25,16 +25,22 @@ const App = () => {
     }
   ])
 
-  const [form, setForm] = useState(false)
+  const [form, setForm] = useState(false);
+
+  const hideForm = () => {
+    setForm(false);
+    setHeaderButton({text: 'Add Task', onClick: displayForm});
+  }
 
   const displayForm = () => {
-    setForm(true)
+    setForm(true);
+    setHeaderButton({text: 'Go Back', onClick: hideForm});
   }
   const saveTask = (task) => {
     const id = tasks.length + 1;
     const newTask = {id, ...task};
     setTasks([...tasks, newTask]);
-    setForm(false);
+    hideForm();
   }
 
   const deleteTask = (id) => {
@@ -45,12 +51,15 @@ const App = () => {
     setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task));
   }
 
+  const [headerButton, setHeaderButton] = useState({text: 'Add Task', onClick: displayForm})
+
   return (
     <>
-    <Header title="Task Tracker" displayForm={displayForm}/>
+    <Header title="Task Tracker" headerButton = {headerButton}/>
     <div className="container">
         {form === false ? tasks.length > 0 ? <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}/> : 'No tasks yet, add one!' : <AddTask saveTask={saveTask}/>}
     </div>
+    <br/><br/><br/>
     </>
   );
 }

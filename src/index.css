@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
-
+html {
+  height: 100%;
+}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #212121;
+  background: linear-gradient(270deg, #4e3e00, #272727, #272727);
+  background-size: 400% 400%;
   color: white;
   font-family: 'Courgette', cursive;
+  animation: backgroundAnimation 10s ease infinite;
+}
+@keyframes backgroundAnimation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 #root {
   width: 100%;
@@ -32,8 +41,11 @@ h1 {
 body::-webkit-scrollbar {
   width: 12px;
 }
+body::-webkit-scrollbar-track {
+  background-color: #272727;
+}
 body::-webkit-scrollbar-thumb {
-  background-color: #888787;
+  background-color: #d2ae05;
   border-radius: 10px;
 }
 .task {
@@ -113,6 +125,8 @@ button {
   padding: 3px 7px;
   font-size: 20px;
   font-family: 'Courgette', cursive;
+  border: 2px solid #cc000000;
+  border-radius: 5px;
 }
 .form-control-check {
   display: flex;
