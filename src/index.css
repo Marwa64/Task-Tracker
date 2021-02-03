@@ -6,7 +6,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(270deg, #4e3e00, #272727, #272727);
+  background: linear-gradient(90deg, #151515, #272727, #613300);
   background-size: 400% 400%;
   color: white;
   font-family: 'Courgette', cursive;
