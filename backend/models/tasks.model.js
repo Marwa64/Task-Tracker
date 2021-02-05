@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
-  username: {
+  email: {
     type: String,
     required: true,
   },
   text: {
     type: String,
+    trim: true,
     require: true
   },
   day: {
@@ -15,7 +16,7 @@ const taskSchema = new Schema({
     required: true
   },
   reminder: {
-    type: Boolean
+    type: Number
   }
 });
 
