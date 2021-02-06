@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 html {
   height: 100%;
 }
@@ -6,7 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(90deg, #151515, #272727, #613300);
+  background: linear-gradient(90deg, #151515, #272727, #313131);
   background-size: 400% 400%;
   color: white;
   font-family: 'Courgette', cursive;
@@ -27,7 +28,52 @@ body {
     align-items: center;
     flex-direction: column;
 }
-header {
+.hero {
+  width: 300px;
+  height: 300px;
+  margin-right: 80px;
+  margin-top: 50px;
+  position: relative;
+  right: 0;
+}
+.headerContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #0000009c;
+  clip-path: polygon(0 0, 100% 0%, 100% 61%, 0 82%);
+  height: 450px;
+}
+.landingHeader {
+  display: flex;
+  margin-bottom: 30px;
+  margin-top: 3vh;
+  color: black;
+}
+.landingHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #f5ce00;
+  clip-path: polygon(0 0, 100% 0%, 100% 59%, 0 79%);
+  height: 450px;
+}
+.landingTitleContainer {
+  position: relative;
+  margin-left: 20px;
+}
+h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 65px;
+  padding-left: 50px;
+}
+.contentHeader {
   margin-top: 7vh;
   display: grid;
   grid-template-columns: 77% 23%;
@@ -36,7 +82,13 @@ header {
 }
 h1 {
   font-size: 45px;
-  padding-left: 40px;
+  padding-left: 50px;
+}
+p {
+  width: 80%;
+  padding-left: 10px;
+  font-size: 20px;
+  margin-top: -20px;
 }
 body::-webkit-scrollbar {
   width: 12px;
@@ -144,12 +196,43 @@ button {
   animation: slide 0.5s forwards;
   animation-delay: 1s;
 }
+
+@media only screen and (max-width: 900px) {
+  /* For mobile phones: */
+  .landingHeader {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+  }
+  .landingTitleContainer {
+    margin-top: 0px;
+  }
+  .landingHeader::before {
+    clip-path: none;
+  }
+  .hero {
+      margin-top: 25px;
+      margin-right: 0px;
+  }
+  p {
+    width: 100%;
+    padding-left: 0px;
+    text-align: center;
+    font-size: 17px;
+  }
+  h2 {
+    padding-left: 0px;
+    font-size: 53px;
+    text-align: center;
+  }
+}
 @media only screen and (max-width: 700px) {
   /* For mobile phones: */
   .form-control {
     grid-template-columns: auto;
   }
-  header {
+  .contentHeader {
     grid-template-columns: auto;
   }
   button {

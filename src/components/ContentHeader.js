@@ -1,13 +1,13 @@
 import Button from './Button'
 
-const Header = (props) => {
+const ContentHeader = (props) => {
 
     return (
-      <header>
-        <h1>{props.title}</h1>
+      <header className="contentHeader">
+        <h1>Task Tracker</h1>
         <Button text={props.headerButton.text} onClick={props.headerButton.onClick}/>
       </header>
     )
 }
 
-export default Header;
+export default ContentHeader;
