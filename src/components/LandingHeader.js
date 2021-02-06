@@ -7,7 +7,7 @@ const LandingHeader = (props) => {
         <header className="landingHeader">
           <div className="landingTitleContainer">
             <h2>Task Tracker</h2>
-            <p>Keep track of all your tasks from now on, from work-related tasks to daily tasks. And set a reminder to receive
+            <p className="description">Keep track of all your tasks from now on, from work-related tasks to daily tasks. And set a reminder to receive
             an email when the deadline is near!</p>
           </div>
           <span><Hero className="hero"/></span>
