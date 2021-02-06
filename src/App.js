@@ -6,9 +6,13 @@ const App = () => {
 
   const [login, setLogin] = useState(false);
 
+  const loginFunc = () => {
+    setLogin(true);
+  }
+
   return (
     <>
-      {login ? <Content /> : <Landing />}
+      {login ? <Content /> : <Landing login={loginFunc} />}
     </>
   );
 }
