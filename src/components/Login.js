@@ -10,14 +10,16 @@ const Login = (props) => {
     <form className='login-form' onSubmit={onSubmit}>
       <div className='form-control' >
         <label>Email</label>
-        <input id='taskText' type='text' placeholder='Enter Email'/>
+        <input type='text' placeholder='Enter Email'/>
       </div>
       <div className='form-control'>
         <label>Password</label>
-        <input id='day' type='text' placeholder='Enter Password'/>
+        <input type='password' placeholder='Enter Password'/>
       </div>
 
-      <input type='submit' value='Log in' className='btn' id="submit"/>
+      <input type='submit' value='Login' className='btn' id="submit"/>
+      <button className='btn'>Sign in with BlackBoard</button>
+      <h4>Don't have an account? <a onClick = {props.signup}> Sign up here! </a></h4>
     </form>
     </>
   )

@@ -1,7 +1,8 @@
-import ContentHeader from './ContentHeader'
-import Tasks from './Tasks'
-import AddTask from './AddTask'
-import { useState } from 'react'
+import ContentHeader from './ContentHeader';
+import Tasks from './Tasks';
+import AddTask from './AddTask';
+import { useState } from 'react';
+import axios from 'axios';
 
 const Content = () => {
   const [tasks, setTasks] = useState([
@@ -37,10 +38,13 @@ const Content = () => {
     setHeaderButton({text: 'Go Back', onClick: hideForm});
   }
   const saveTask = (task) => {
-    const id = tasks.length + 1;
-    const newTask = {id, ...task};
-    setTasks([...tasks, newTask]);
-    hideForm();
+    const email = 'marwa@hotmail.com';
+    const newTask = {email, ...task};
+    console.log(newTask);
+    axios.post('http://localhost:5000/tasks/add', newTask)
+    .then(res => (res.data === "Task Added!") ? hideForm() : console.log(res.data));
+    //setTasks([...tasks, newTask]);
+    //hideForm();
   }
 
   const deleteTask = (id) => {
