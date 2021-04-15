@@ -1,13 +1,14 @@
 const router = require('express').Router();
+const verify = require('./verifyToken');
 const Task = require('../models/tasks.model');
 
-router.route('/:email').get((req, res) => {
-  Task.find({'email': req.params.email })
+router.get('/', verify, (req, res) => {
+  Task.find()
     .then(tasks => res.json(tasks))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+router.post('/add', verify, (req, res) => {
   const email = req.body.email;
   const text = req.body.text;
   const day = Date.parse(req.body.day);
@@ -20,7 +21,7 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/delete/:id').delete((req, res) => {
+router.delete('/delete/:id', verify, (req, res) => {
   Task.findByIdAndDelete(req.params.id)
     .then(tasks => res.json('Task Deleted'))
     .catch(err => res.status(400).json('Error: ' + err));

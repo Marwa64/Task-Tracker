@@ -20,7 +20,7 @@ const Signup = (props) => {
     } else {
       pass1.style.borderColor = '#cc000000';
     }
-    if (pass1.value != pass2.value){
+    if (pass1.value !== pass2.value){
       console.log("passwords don't match");
       pass2.style.borderColor = '#cc0000';
       return;
@@ -32,8 +32,8 @@ const Signup = (props) => {
       password: pass1.value,
     }
     console.log(user);
-    axios.post('http://localhost:5000/users/add', user)
-    .then(res => (res.data === "User Added!") ? props.signup() : console.log(res.data));
+    axios.post('http://localhost:5000/users/signup', user)
+    .then(res => console.log(res)); //res => (res.data === "User Added!") ? props.signup() : console.log(res.data)
   }
   return (
     <>
