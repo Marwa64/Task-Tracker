@@ -16,7 +16,7 @@ const taskSchema = new Schema({
     required: true
   },
   reminder: {
-    type: Number
+    type: String
   }
 });
 

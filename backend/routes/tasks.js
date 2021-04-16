@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const verify = require('./verifyToken');
 const Task = require('../models/tasks.model');
+const User = require('../models/users.model');
 
 router.get('/', verify, (req, res) => {
   Task.find()
@@ -9,13 +10,14 @@ router.get('/', verify, (req, res) => {
 });
 
 router.post('/add', verify, (req, res) => {
-  const email = req.body.email;
+  const email = req.user.email;
   const text = req.body.text;
   const day = Date.parse(req.body.day);
-  const reminder = Number(req.body.reminder);
+  const reminder = req.body.reminder;
 
   const newTask = new Task({email, text, day, reminder});
-
+  //console.log(day);
+  //res.send(req.user);
   newTask.save()
     .then(() => res.json('Task Added!'))
     .catch(err => res.status(400).json('Error: ' + err));

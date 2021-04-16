@@ -9,7 +9,7 @@ const Login = (props) => {
     let user = {email, password};
     //console.log(user);
     axios.post('http://localhost:5000/users/login', user)
-    .then(res => res.data ? props.login() : '');
+    .then(res => res.data ? props.login(res.data) : '');
   }
   return (
     <>

@@ -9,6 +9,7 @@ const AddTask = (props) => {
 
   const onSubmit = (e) => {
       e.preventDefault();
+      console.log(reminder);
       if (!text) {
         document.querySelector('#taskText').style.borderColor = '#cc0000';
         if (!day) {
@@ -34,7 +35,7 @@ const AddTask = (props) => {
       </div>
       <div className='form-control' style={{animationDelay: (animationDelay = animationDelay+0.4) + 's'}}>
         <label>Day & Time</label>
-        <input id='day' type='text' placeholder='Add Day & Time' value={day} onChange={(e) => setDay(e.target.value)}
+        <input id='day' type='datetime-local' value={day} onChange={(e) => setDay(e.target.value)}
         />
       </div>
       <div className='form-control form-control-check' style={{animationDelay: (animationDelay = animationDelay+0.4) + 's'}}>

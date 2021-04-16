@@ -43,10 +43,10 @@ router.route('/login').post(async (req, res) => {
     const isPassCorrect = await bcrypt.compare(password, existingUser.password);
     if (!isPassCorrect) return res.status(400).json({message: "Invalid credentials"});
 
-    const token = jwt.sign({ id: existingUser._id }, process.env.TOKEN_SECRET, { expiresIn: '2h' });
+    const token = jwt.sign({ email, id: existingUser._id }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
     res.header('auth-token', token);
 
-    res.status(200).json({ result: existingUser, token: token });
+    res.status(200).json({ token: token });
   } catch (e) {
     res.status(500).json({ message: 'something went wrong' });
   }

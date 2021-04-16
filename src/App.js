@@ -4,15 +4,19 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [login, setLogin] = useState(false);
+  const [token, setToken] = useState('');
 
-  const loginFunc = () => {
-    setLogin(true);
+  const login = (data) => {
+    setToken(data.token);
+  }
+
+  const logout = () => {
+    setToken('');
   }
 
   return (
     <>
-      {login ? <Content /> : <Landing login={loginFunc} />}
+      {token ? <Content logout={logout} token={token}/> : <Landing login={login} />}
     </>
   );
 }
