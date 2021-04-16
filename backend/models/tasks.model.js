@@ -12,7 +12,11 @@ const taskSchema = new Schema({
     require: true
   },
   day: {
-    type: Date,
+    type: String,
+    required: true
+  },
+  time: {
+    type: String,
     required: true
   },
   reminder: {

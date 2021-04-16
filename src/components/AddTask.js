@@ -2,29 +2,32 @@ import { useState } from 'react'
 
 const AddTask = (props) => {
   const [text, setText] = useState('')
-  const [day, setDay] = useState('')
+  const [date, setDate] = useState('')
   const [reminder, setReminder] = useState(false)
 
   let animationDelay = 0;
 
   const onSubmit = (e) => {
       e.preventDefault();
-      console.log(reminder);
       if (!text) {
         document.querySelector('#taskText').style.borderColor = '#cc0000';
-        if (!day) {
-          document.querySelector('#day').style.borderColor = '#cc0000';
+        if (!date) {
+          document.querySelector('#date').style.borderColor = '#cc0000';
         } else {
-          document.querySelector('#day').style.borderColor = '#cc000000';
+          document.querySelector('#date').style.borderColor = '#cc000000';
         }
         return
       }
-      if (!day) {
+      if (!date) {
         document.querySelector('#taskText').style.borderColor = '#cc000000';
-        document.querySelector('#day').style.borderColor = '#cc0000';
+        document.querySelector('#date').style.borderColor = '#cc0000';
         return
       }
-      props.saveTask({text, day, reminder});
+      let dayTimeArr = date.split("T");
+      let day = dayTimeArr[0];
+      let time = dayTimeArr[1].split(".")[0];
+      console.log(day + " " + time);
+      props.saveTask({text, day, time, reminder});
   }
   return (
     <form className='add-form' onSubmit={onSubmit}>
@@ -35,7 +38,7 @@ const AddTask = (props) => {
       </div>
       <div className='form-control' style={{animationDelay: (animationDelay = animationDelay+0.4) + 's'}}>
         <label>Day & Time</label>
-        <input id='day' type='datetime-local' value={day} onChange={(e) => setDay(e.target.value)}
+        <input id='date' type='datetime-local' value={date} onChange={(e) => setDate(e.target.value)}
         />
       </div>
       <div className='form-control form-control-check' style={{animationDelay: (animationDelay = animationDelay+0.4) + 's'}}>

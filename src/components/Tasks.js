@@ -5,7 +5,7 @@ const Tasks = (props) => {
 
   return (
     <>
-      {props.tasks.map((task) => (<Task key={task.id} animationDelay={animationDelay+= 0.4} task={task} deleteTask={props.deleteTask} toggleReminder={props.toggleReminder} />))}
+      {props.tasks.map((task) => (<Task key={task._id} animationDelay={animationDelay+= 0.4} task={task} deleteTask={props.deleteTask} toggleReminder={props.toggleReminder} />))}
     </>
   )
 }

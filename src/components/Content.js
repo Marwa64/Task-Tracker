@@ -1,13 +1,18 @@
 import ContentHeader from './ContentHeader';
 import Tasks from './Tasks';
 import AddTask from './AddTask';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Content = (props) => {
   const [tasks, setTasks] = useState([])
 
   const [form, setForm] = useState(false);
+
+  useEffect(()=>{
+    axios.get('http://localhost:5000/tasks', {headers: {'auth-token' : props.token }})
+    .then(res => setTasks(res.data));
+  })
 
   const hideForm = () => {
     setForm(false);
@@ -19,19 +24,16 @@ const Content = (props) => {
     setHeaderButton({text: 'Go Back', onClick: hideForm});
   }
   const saveTask = (task) => {
-    //console.log(props.token);
     axios.post('http://localhost:5000/tasks/add', task, {headers: {'auth-token' : props.token }})
     .then(res => (res.data === "Task Added!") ? hideForm() : console.log(res.data));
-    //setTasks([...tasks, newTask]);
-    //hideForm();
   }
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks(tasks.filter((task) => task._id !== id));
   }
 
   const  toggleReminder = (id) => {
-    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task));
+    setTasks(tasks.map((task) => task._id === id ? { ...task, reminder: !task.reminder } : task));
   }
 
   const [headerButton, setHeaderButton] = useState({text: 'Add Task', onClick: displayForm});

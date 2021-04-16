@@ -7,7 +7,7 @@ const Login = (props) => {
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
     let user = {email, password};
-    //console.log(user);
+
     axios.post('http://localhost:5000/users/login', user)
     .then(res => res.data ? props.login(res.data) : '');
   }
