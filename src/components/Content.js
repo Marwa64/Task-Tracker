@@ -29,11 +29,8 @@ const Content = (props) => {
   }
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task._id !== id));
-  }
-
-  const  toggleReminder = (id) => {
-    setTasks(tasks.map((task) => task._id === id ? { ...task, reminder: !task.reminder } : task));
+    axios.delete(`http://localhost:5000/tasks/delete/${id}`, {headers: {'auth-token': props.token}})
+    .then(res => console.log(res.data));
   }
 
   const [headerButton, setHeaderButton] = useState({text: 'Add Task', onClick: displayForm});
@@ -42,7 +39,7 @@ const Content = (props) => {
     <>
     <ContentHeader headerButton = {headerButton}/>
     <div className="container">
-        {form === false ? tasks.length > 0 ? <Tasks tasks={tasks} deleteTask={deleteTask} toggleReminder={toggleReminder}/> : 'No tasks yet, add one!' : <AddTask saveTask={saveTask}/>}
+        {form === false ? tasks.length > 0 ? <Tasks tasks={tasks} deleteTask={deleteTask}/> : 'No tasks yet, add one!' : <AddTask saveTask={saveTask}/>}
     </div>
     <br/><br/><br/>
     </>

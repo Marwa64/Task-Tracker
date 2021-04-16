@@ -122,9 +122,6 @@ svg {
   right: 30px;
   margin-top: 12px;
 }
-.reminder {
-  border-left: 10px solid green;
-}
 h3 {
   margin-bottom: -5px;
 }
@@ -171,19 +168,11 @@ form {
   margin-top: 70px;
 }
 .form-control {
-  margin: 20px 0;
-}
-.form-control {
-  left: -200%;
-  margin: 20px 0;
   display: grid;
   grid-template-columns: 40% 60%;
   align-items: center;
   font-size: 25px;
   color: #f1c700;
-  position: relative;
-  animation: slide 0.5s forwards;
-  animation-delay: 1s;
 }
 .form-control label {
   display: block;
@@ -208,13 +197,15 @@ form {
   height: 20px;
 }
 #submit {
+  margin-bottom: -5px;
+}
+.slide {
   left: -200%;
-  margin-top: 20px;
+  margin: 20px 0;
   position: relative;
   animation: slide 0.5s forwards;
-  animation-delay: 1s;
+  animation-delay: 0.3s;
 }
-
 @media only screen and (max-width: 900px) {
   .landingHeader {
     flex-direction: column;

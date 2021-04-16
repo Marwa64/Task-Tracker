@@ -14,9 +14,8 @@ router.post('/add', verify, (req, res) => {
   const text = req.body.text;
   const day = req.body.day;
   const time = req.body.time;
-  const reminder = req.body.reminder;
 
-  const newTask = new Task({email, text, day, time, reminder});
+  const newTask = new Task({email, text, day, time});
 
   newTask.save()
     .then(() => res.json('Task Added!'))

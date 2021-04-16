@@ -14,18 +14,17 @@ const Login = (props) => {
   return (
     <>
     <form className='login-form' onSubmit={onSubmit}>
-      <div className='form-control' >
+      <div className='form-control slide' >
         <label>Email</label>
         <input id='email' type='text' placeholder='Enter Email'/>
       </div>
-      <div className='form-control'>
+      <div className='form-control slide'>
         <label>Password</label>
         <input id='password' type='password' placeholder='Enter Password'/>
       </div>
-
-      <input type='submit' value='Login' className='btn' id="submit"/>
-      <button className='btn'>Sign in with BlackBoard</button>
-      <h4>Don't have an account? <a onClick = {props.signup}> Sign up here! </a></h4>
+        <input type='submit' value='Login' className='btn slide' id="submit"/>
+        <button className='btn slide'>Sign in with BlackBoard</button>
+        <h4 className='slide'>Don't have an account? <a onClick = {props.signup}> Sign up here! </a></h4>
     </form>
     </>
   )
