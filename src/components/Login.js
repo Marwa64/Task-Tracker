@@ -23,7 +23,7 @@ const Login = (props) => {
         <input id='password' type='password' placeholder='Enter Password'/>
       </div>
         <input type='submit' value='Login' className='btn slide' id="submit"/>
-        <button className='btn slide'>Sign in with BlackBoard</button>
+        <button className='btn slide'>Sign in with Google</button>
         <h4 className='slide'>Don't have an account? <a onClick = {props.signup}> Sign up here! </a></h4>
     </form>
     </>

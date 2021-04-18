@@ -52,7 +52,7 @@ const Signup = (props) => {
       </div>
 
       <input type='submit' value='Sign up' className='btn slide' id="submit"/>
-      <button className='btn slide'>Sign up with BlackBoard</button>
+      <button className='btn slide'>Sign up with Google</button>
       <h4 className='slide'>Already have an account? <a onClick = {props.signup}> Login here! </a></h4>
     </form>
     </>

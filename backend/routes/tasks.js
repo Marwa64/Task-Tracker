@@ -4,6 +4,7 @@ const Task = require('../models/tasks.model');
 const User = require('../models/users.model');
 
 router.get('/', verify, (req, res) => {
+  //console.log(req.user.exp);
   Task.find({email: req.user.email})
     .then(tasks => res.json(tasks))
     .catch(err => res.status(400).json('Error: ' + err));

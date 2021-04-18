@@ -1,10 +1,19 @@
 import Landing from './components/Landing'
 import Content from './components/Content'
 import { useState } from 'react'
+import axios from 'axios';
 
 const App = () => {
 
-  const [token, setToken] = useState('');
+  const refreshToken = () => {
+    let token = '';
+    axios.get('http://localhost:5000/users/token', { withCredentials: true })
+    .then(res => res === 'undefined' ? token = '' : token = res);
+    console.log('token: ' + token)
+    return token;
+  }
+
+  const [token, setToken] = useState(refreshToken());
 
   const login = (data) => {
     setToken(data.token);
